@@ -28,6 +28,12 @@ def get_quotes():
         
             }
         thislist.append(data)
-    print(thislist)
+    return {
+        "quote": thislist,
+        "count": len(thislist),
+    }
+    
+    
+        # print(f"total quotes: {len(data)}")
 
-    return thislist 
+    # return thislist
