@@ -1,10 +1,15 @@
+from selenium import webdriver
+import time
 from bs4 import BeautifulSoup
-import requests
 import pandas as pd
 
 def get_html(url):
-    response = requests.get(url)
-    return response.text
+    driver = webdriver.Chrome()
+    driver.get(url)
+    time.sleep(2)  # tunggu loading
+    html = driver.page_source
+    driver.quit() #biar browsernya ketutup
+    return html
 
 def get_quotes():
     url = "https://quotes.toscrape.com/"
@@ -32,8 +37,9 @@ def get_quotes():
         "quote": thislist,
         "count": len(thislist),
     }
-    
-    
-        # print(f"total quotes: {len(data)}")
 
-    # return thislist
+if __name__ == "__main__":
+    get_quotes() 
+    
+    
+       
